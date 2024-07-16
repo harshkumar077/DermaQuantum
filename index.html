@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/styles.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.maptiler.com/maptiler-sdk-js/v1.2.0/maptiler-sdk.css" rel="stylesheet" />
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v1.2.0/maptiler-sdk.umd.js"></script>
+    <style>
+.chat-space {
+    display: none;
+    position: absolute; /* Changed from fixed to absolute */
+    right: 20px;
+    width: 300px;
+    max-height: 460px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+#show-chatbot {
+    position: fixed; /* Fixed position on the right side */
+    right: 20px; /* Right margin from the viewport */
+    bottom: 20px; /* Bottom margin from the viewport */
+    padding: 10px 20px; /* Padding for better visual appeal */
+    background-color: #6a0dad; /* Purple background, matching your theme */
+    color: white; /* White text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor indicates clickable */
+    font-size: 16px; /* Larger font size */
+}
+
+  </style>
+
+    <script>
+      window.onload = function() {
+            var disease = "{{ prediction }}";
+            if(disease != ''){
+              document.getElementById('SecondPage').style.display = 'flex';
+            }
+            if (disease === 'Acne and Rosacea') {
+                // document.getElementById('SecondPage').style.display = 'none';
+                var divs = document.getElementsByClassName("acne");
+                for (var i = 0; i < divs.length; i++) {
+                  divs[i].style.display = "flex";
+                }
+            }
+            else if(disease === 'Light Diseases and Disorders of Pigmentation'){
+              var divs = document.getElementsByClassName("pigmentation");
+              for (var i = 0; i < divs.length; i++) {
+                divs[i].style.display = "flex";
+              }
+            }
+            else if(disease === 'Lupus and other Connective Tissue diseases'){
+              var divs = document.getElementsByClassName("lupus");
+              for (var i = 0; i < divs.length; i++) {
+                divs[i].style.display = "flex";
+              }
+            }
+            else if(disease === 'Systemic Disease'){
+              var divs = document.getElementsByClassName("systemic");
+              for (var i = 0; i < divs.length; i++) {
+                divs[i].style.display = "flex";
+              }
+            }
+            else if(disease === 'Poison Ivy and other Contact Dermatitis'){
+              var divs = document.getElementsByClassName("poison");
+              for (var i = 0; i < divs.length; i++) {
+                divs[i].style.display = "flex";
+              }
+            }
+            else if(disease === 'Vascular Tumors'){
+              var divs = document.getElementsByClassName("vascular");
+              for (var i = 0; i < divs.length; i++) {
+                divs[i].style.display = "flex";
+              }
+            }
+            else if(disease === 'Urticaria Hives'){
+              var divs = document.getElementsByClassName("hives");
+              for (var i = 0; i < divs.length; i++) {
+                divs[i].style.display = "flex";
+              }
+            }
+            else if(disease === 'Atopic Dermatitis'){
+              var divs = document.getElementsByClassName("atopic");
+              for (var i = 0; i < divs.length; i++) {
+                divs[i].style.display = "flex";
+              }
+            }
+            else if(disease === 'Bullous Disease'){
+              var divs = document.getElementsByClassName("bullous");
+              for (var i = 0; i < divs.length; i++) {
+                divs[i].style.display = "flex";
+              }
+            }
+            else if(disease === 'Hair Loss Alopecia and other Hair Diseases'){
+              var divs = document.getElementsByClassName("alopecia");
+              for (var i = 0; i < divs.length; i++) {
+                divs[i].style.display = "flex";
+              }
+            }
+            else if(disease === 'Tinea Ringworm Candidiasis and other Fungal Infections'){
+              var divs = document.getElementsByClassName("ringworm");
+              for (var i = 0; i < divs.length; i++) {
+                divs[i].style.display = "flex";
+              }
+            }
+            else if(disease === 'Psoriasis Lichen Planus and related diseases'){
+              var divs = document.getElementsByClassName("psoriasis");
+              for (var i = 0; i < divs.length; i++) {
+                divs[i].style.display = "flex";
+              }
+            }
+            else if(disease === 'Melanoma Skin Cancer Nevi and Moles'){
+              var divs = document.getElementsByClassName("melanoma");
+              for (var i = 0; i < divs.length; i++) {
+                divs[i].style.display = "flex";
+              }
+            }
+            else if(disease === 'Nail Fungus and other Nail Disease'){
+              var divs = document.getElementsByClassName("nailfungus");
+              for (var i = 0; i < divs.length; i++) {
+                divs[i].style.display = "flex";
+              }
+            }
+            else if(disease === 'Scabies Lyme Disease and other Infestations and Bites'){
+              var divs = document.getElementsByClassName("scabies");
+              for (var i = 0; i < divs.length; i++) {
+                divs[i].style.display = "flex";
+              }
+            }
+            else if(disease === 'Eczema'){
+              var divs = document.getElementsByClassName("eczema");
+              for (var i = 0; i < divs.length; i++) {
+                divs[i].style.display = "flex";
+              }
+            }
+        }
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <nav>
+        <label  class="logo" >A Novel Approach to Derma Quantum (Skin disease detection and
+          classification using ResNet50 and QCNN ) </label>
+        <ul>
+          <!-- <li><a href="#">Home</a></li> -->
+          <!-- <li><a href="#">Features</a></li> -->
+          <!-- <li><a href="#">Contact</a></li> -->
+          <!-- <li><a href="#">Login</a></li> -->
+        </ul>
+      </nav>
+      <div class="content">
+        <img
+          id="background-img"
+          src="{{url_for('static', filename='/Image/background.png')}}"
+          alt=""
+        />
+        <div class="upload-space">
+          <form action="/" method="post" enctype="multipart/form-data">
+            <div class="upload-box">
+              <h1>Upload Image</h1>
+              <div class="file-drop-area">
+                <div class="choose-file-button">
+                  <label for="files">CHOOSE FILE</label>
+                  <input
+                    id="files"
+                    class="input-file"
+                    type="file"
+                    name="imagefile"
+                    accept="image/*"
+                    onchange="showFileName()"
+                  />
+                </div>
+                <p id="addfiles" class="file-instructions">or drop file here</p>
+                <span id="fileNameSpan" style="display: none"></span>
+              </div>
+            </div>
+            <div class="submitbutton">
+              <button onclick="submit">Submit Image</button>
+            </div>
+
+          </form>
+        </div>
+<!--
+        <div class="chat-space">
+          <div class="chat-header">ChatBot</div>
+          <div class="chatbot">
+            <ul class="chatbox">
+              <li class="chat incoming">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <p>Hi there 👋<br />How can I help you today?</p>
+              </li>
+            </ul>
+          </div>
+          <div class="chat-input">
+            <textarea
+              placeholder="Enter a message..."
+              spellcheck="false"
+              required
+            ></textarea>
+            <span id="send-btn" class="material-symbols-rounded">send</span>
+          </div>
+        </div>
+-->
+<!-- chatbot open -->
+
+<button id="show-chatbot">Show ChatBot</button>
+
+<div class="chat-space" style="display: none;">
+    <div class="chat-header">ChatBot</div>
+    <div class="chatbot">
+        <ul class="chatbox">
+            <li class="chat incoming">
+                <span class="material-symbols-outlined">smart_toy</span>
+                <p>Hi there 👋<br />How can I help you today?</p>
+            </li>
+        </ul>
+    </div>
+    <div class="chat-input">
+        <textarea placeholder="Enter a message..." spellcheck="false" required></textarea>
+        <span id="send-btn" class="material-symbols-rounded">send</span>
+    </div>
+</div>
+
+<script>
+    document.getElementById('show-chatbot').addEventListener('click', function() {
+        var chatSpace = document.querySelector('.chat-space');
+        var chatBtn = document.getElementById('show-chatbot');
+        if (chatSpace.style.display === 'none') {
+            chatSpace.style.display = 'block';
+            chatBtn.style.display = 'none';
+        } else {
+            chatSpace.style.display = 'none'; // Optionally hide the chatbot when clicked again
+        }
+    });
+</script>
+
+
+<!-- chatbot close -->
+
+
+        <div class="result-area">
+          {% if prediction %}
+          <style>
+            .result-area {
+              visibility: visible;
+            }
+            .additional-content {
+              display: flex;
+            }
+          </style>
+          <div class="result-top">
+            <img src="{{image}}" alt="img" />
+          </div>
+          <div class="result-bottom">
+            <div class="text-result-area">
+              <p class="text-result">Skin Disease: {{prediction}}</p>
+            </div>
+            <div class="result-more">
+              <button onclick="scrollToSection()">More Info</button>
+            </div>
+          </div>
+          
+          {% endif %}
+        </div>
+      </div>
+
+      <div id="SecondPage" class="additional-content">
+        <div class="header">
+          <h2>Additional Content</h2>
+        </div>
+        <div class="content-area">
+          <div class="content">
+            <div class="information-block">
+              <div class="information-nav">
+                <div id="info-overview" class="menu"><p>Overview</p></div>
+                <div id="info-symptoms" class="menu"><p>Symptoms</p></div>
+                <div id="info-treatment" class="menu"><p>Treatment</p></div>
+              </div>
+              <div class="information-details">
+                <div id="overview-summary" class="information-summary">
+                  <div class="acne information-summary-disease">
+                    <div class="top">
+                      <p>
+                        A skin condition that occurs when hair follicles plug
+                        with oil and dead skin cells. Acne is most common in
+                        teenagers and young adults.<br /><br />
+                        Symptoms range from uninflamed blackheads to pus-filled
+                        pimples or large, red and tender bumps. Treatments
+                        include over-the-counter creams and cleanser, as well as
+                        prescription antibiotics.
+                      </p>
+                    </div>
+                    <hr />
+                    <div class="bottom">
+                      <h2>Very Common</h2>
+                      <p>More than 10 million cases per year (India)</p>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/bag_icon.png')}}"/>
+                        <p>Treatable by a medical professional</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/schedule_icon.png')}}"/>
+                        <p>Requires a medical diagnosis</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/lab_icon.png')}}"/>
+                        <p>Lab tests or imaging not required</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pigmentation information-summary-disease">
+                    <div class="top">
+                      <p>
+                        A condition in which brown patches appear on the face or skin colour in blotches.<br /><br />
+                        Albinism, melasma, vitiligo, Addison's disease, and post-inflammatory hyperpigmentation are the most common skin pigmentation disorders. Some pigmentation disorders affect just patches of skin, while others affect your entire body.
+                      </p>
+                    </div>
+                    <hr />
+                    <div class="bottom">
+                      <h2>Common</h2>
+                      <p>More than 1 million cases per year (India)</p>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/bag_icon.png')}}"/>
+                        <p>Treatment can help</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/schedule_icon.png')}}"/>
+                        <p>Requires a medical diagnosis</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/lab_icon.png')}}"/>
+                        <p>Lab tests or imaging rarely required</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lupus information-summary-disease">
+                    <div class="top">
+                      <p>
+                        An inflammatory disease caused when the immune system attacks its own tissues.<br /><br />
+                        Lupus (SLE) can affect the joints, skin, kidneys, blood cells, brain, heart and lungs.<br>
+                        Symptoms vary but can include fatigue, joint pain, rash and fever. These can periodically get worse (flare up) and then improve.
+                      </p>
+                    </div>
+                    <hr />
+                    <div class="bottom">
+                      <h2>Common</h2>
+                      <p>More than 1 million cases per year (India)</p>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/bag_icon.png')}}"/>
+                        <p>Treatment can help, but this condition can't be cured</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/schedule_icon.png')}}"/>
+                        <p>Requires a medical diagnosis</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/lab_icon.png')}}"/>
+                        <p>Lab tests or imaging always required</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="systemic information-summary-disease">
+                    <div class="top">
+                      <p>
+                        A skin condition characterised by dark, velvety patches in body folds and creases.<br /><br />
+                        Acanthosis nigricans typically occurs in people who are obese or have diabetes. More rarely, it can be a warning sign of a cancerous tumour in an internal organ, such as the stomach or liver.<br>
+                        Dark, velvety patches of skin often appear in the armpits, groin and neck.
+                      </p>
+                    </div>
+                    <hr />
+                    <div class="bottom">
+                      <h2>Very Common</h2>
+                      <p>More than 10 million cases per year (India)</p>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/bag_icon.png')}}"/>
+                        <p>Treatable by a medical professional</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/schedule_icon.png')}}"/>
+                        <p>Requires a medical diagnosis</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/lab_icon.png')}}"/>
+                        <p>Lab tests or imaging not required</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="poison information-summary-disease">
+                    <div class="top">
+                      <p>
+                        A skin rash caused by contact with a certain substance.<br /><br />
+                        The substance might irritate the skin or trigger an allergic reaction. Some common culprits include soap, cosmetics, fragrances, jewellery and poison ivy.<br>
+                        The main symptom is a red rash wherever the skin came into contact with the irritant.
+                      </p>
+                    </div>
+                    <hr />
+                    <div class="bottom">
+                      <h2>Very Common</h2>
+                      <p>More than 10 million cases per year (India)</p>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/bag_icon.png')}}"/>
+                        <p>Treatable by a medical professional</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/schedule_icon.png')}}"/>
+                        <p>Usually self-diagnosable</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/lab_icon.png')}}"/>
+                        <p>Lab tests or imaging not required</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="vascular information-summary-disease">
+                    <div class="top">
+                      <p>
+                        These are a group of benign skin lesions characterized by small, dark red to purple papules that typically develop on the skin of the genitals, thighs, buttocks, or lower abdomen.<br /><br />
+                        These lesions are caused by the dilation of small blood vessels in the skin and the overgrowth of keratinized skin cells.
+                      </p>
+                    </div>
+                    <hr />
+                    <div class="bottom">
+                      <h2>Rare</h2>
+                      <p>More than 1 million cases per year (India)</p>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/bag_icon.png')}}"/>
+                        <p>Treatable by a medical professional</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/schedule_icon.png')}}"/>
+                        <p>Usually self-diagnosable</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/lab_icon.png')}}"/>
+                        <p>Lab tests or imaging may required</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="hives information-summary-disease">
+                    <div class="top">
+                      <p>
+                        A skin rash triggered by a reaction to food, medicine or other irritants.<br /><br />
+                        Hives are a common skin rash triggered by many things, including certain foods, medication, stress, exercise, excessive sweating, and exposure to hot or cold temperatures.<br>
+                      </p>
+                    </div>
+                    <hr />
+                    <div class="bottom">
+                      <h2>Very common</h2>
+                      <p>More than 10 million cases per year (India)</p>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/bag_icon.png')}}"/>
+                        <p>Usually self-treatable</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/schedule_icon.png')}}"/>
+                        <p>Usually self-diagnosable</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/lab_icon.png')}}"/>
+                        <p>Lab tests or imaging rarely required</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="atopic information-summary-disease">
+                    <div class="top">
+                      <p>
+                        An itchy inflammation of the skin.<br /><br />
+                        Atopic dermatitis usually develops in early childhood and is more common in people who have a family history of the condition.<br>
+                        The main symptom is a rash that typically appears on the arms and behind the knees, but can also appear anywhere.
+                      </p>
+                    </div>
+                    <hr />
+                    <div class="bottom">
+                      <h2>Very common</h2>
+                      <p>More than 10 million cases per year (India)</p>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/bag_icon.png')}}"/>
+                        <p>Treatable by a medical professional</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/schedule_icon.png')}}"/>
+                        <p>Usually self-diagnosable</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/lab_icon.png')}}"/>
+                        <p>Lab tests or imaging not required</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bullous information-summary-disease">
+                    <div class="top">
+                      <p>
+                        Bullous pemphigoid is a rare autoimmune skin disorder characterized by the development of large, fluid-filled blisters or bullae on the skin.<br /><br />
+                        These typically occur on areas of the skin that flex or rub, such as the abdomen, groin, armpits, and inner thighs. It occurs when the body's immune system mistakenly attacks the thin layer of tissue below the outer layer of skin, known as the basement membrane.
+                      </p>
+                    </div>
+                    <hr />
+                    <div class="bottom">
+                      <h2>Rare</h2>
+                      <p>More than 1 million cases per year (India)</p>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/bag_icon.png')}}"/>
+                        <p>Treatable by a medical professional</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/schedule_icon.png')}}"/>
+                        <p>Usually self-diagnosable</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/lab_icon.png')}}"/>
+                        <p>Lab tests or imaging may required</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="alopecia information-summary-disease">
+                    <div class="top">
+                      <p>
+                        Sudden hair loss that starts with one or more circular bald patches that may overlap.<br /><br />
+                        Alopecia areata occurs when the immune system attacks hair follicles and may be brought on by severe stress.<br>
+                        The main symptom is patchy hair loss.<br>
+                        Treatment may address any underlying conditions and includes topical scalp medication.
+                      </p>
+                    </div>
+                    <hr />
+                    <div class="bottom">
+                      <h2>Common</h2>
+                      <p>More than 1 million cases per year (India)</p>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/bag_icon.png')}}"/>
+                        <p>Treatable by a medical professional</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/schedule_icon.png')}}"/>
+                        <p>Requires a medical diagnosis</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/lab_icon.png')}}"/>
+                        <p>Lab tests or imaging not required</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ringworm information-summary-disease">
+                    <div class="top">
+                      <p>
+                        A highly contagious fungal infection of the skin or scalp.<br /><br />
+                        Ringworm is spread by skin-to-skin contact or by touching an infected animal or object.<br>
+                        Ringworm is typically scaly and may be red and itchy.<br>
+                        Ringworm of the scalp is common in children, where it may cause bald patches.
+                      </p>
+                    </div>
+                    <hr />
+                    <div class="bottom">
+                      <h2>Very common</h2>
+                      <p>More than 10 million cases per year (India)</p>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/bag_icon.png')}}"/>
+                        <p>Treatable by a medical professional</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/schedule_icon.png')}}"/>
+                        <p>Requires a medical diagnosis</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/lab_icon.png')}}"/>
+                        <p>Lab tests or imaging rarely required</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="psoriasis information-summary-disease">
+                    <div class="top">
+                      <p>
+                        A condition in which skin cells build up and form scales and itchy, dry patches.<br /><br />
+                        Psoriasis is thought to be an immune system problem.<br>
+                        Triggers include infections, stress and cold.<br>
+                        The most common symptom is thick skin patches typically seen on elbows, knees, and lower back associated with white scaling on the scalp.
+                      </p>
+                    </div>
+                    <hr />
+                    <div class="bottom">
+                      <h2>Very common</h2>
+                      <p>More than 10 million cases per year (India)</p>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/bag_icon.png')}}"/>
+                        <p>Treatment can help, but this condition can't be cured</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/schedule_icon.png')}}"/>
+                        <p>Requires a medical diagnosis</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/lab_icon.png')}}"/>
+                        <p>Lab tests or imaging rarely required</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="melanoma information-summary-disease">
+                    <div class="top">
+                      <p>
+                        The most serious type of skin cancer.<br /><br />
+                        Melanoma occurs when the pigment-producing cells that give colour to the skin become cancerous.<br>
+                        Symptoms might include a new, unusual growth or a change in an existing mole. Melanomas can occur anywhere on the body.<br>
+                        Treatment may involve surgery, radiation, medication or in some cases, chemotherapy.
+                      </p>
+                    </div>
+                    <hr />
+                    <div class="bottom">
+                      <h2>Common</h2>
+                      <p>More than 1 million cases per year (India)</p>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/bag_icon.png')}}"/>
+                        <p>Treatable by a medical professional</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/schedule_icon.png')}}"/>
+                        <p>Requires a medical diagnosis</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/lab_icon.png')}}"/>
+                        <p>Lab tests or imaging often required</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="nailfungus information-summary-disease">
+                    <div class="top">
+                      <p>
+                        A nail fungus causing thickened, brittle, crumbly or ragged nails.<br /><br />
+                        Usually, the problems caused by this condition are cosmetic.<br>
+                        The main symptoms are changes in the appearance of nails. Rarely, the condition causes pain or a slightly foul odor.<br>
+                        Treatments include oral antifungal drugs, medicated nail polish or cream or nail removal.
+                      </p>
+                    </div>
+                    <hr />
+                    <div class="bottom">
+                      <h2>Very common</h2>
+                      <p>More than 10 million cases per year (India)</p>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/bag_icon.png')}}"/>
+                        <p>Treatable by a medical professional</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/schedule_icon.png')}}"/>
+                        <p>Usually self-diagnosable</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/lab_icon.png')}}"/>
+                        <p>Lab tests or imaging rarely required</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="scabies information-summary-disease">
+                    <div class="top">
+                      <p>
+                        A contagious, intensely itchy skin condition caused by a tiny, burrowing mite.<br /><br />
+                        Scabies is contagious and spreads quickly through close physical contact in a family, school or nursing home.<br>
+                        The most common symptom of scabies is intense itching at night in the area where the mites burrow.<br>
+                      </p>
+                    </div>
+                    <hr />
+                    <div class="bottom">
+                      <h2>Common</h2>
+                      <p>More than 1 million cases per year (India)</p>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/bag_icon.png')}}"/>
+                        <p>Treatable by a medical professional</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/schedule_icon.png')}}"/>
+                        <p>Usually self-diagnosable</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/lab_icon.png')}}"/>
+                        <p>Lab tests or imaging rarely required</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="eczema information-summary-disease">
+                    <div class="top">
+                      <p>
+                        An itchy inflammation of the skin.<br /><br />
+                        Atopic dermatitis usually develops in early childhood and is more common in people who have a family history of the condition.<br>
+                        The main symptom is a rash that typically appears on the arms and behind the knees, but can also appear anywhere.<br>
+                      </p>
+                    </div>
+                    <hr />
+                    <div class="bottom">
+                      <h2>Very common</h2>
+                      <p>More than 10 million cases per year (India)</p>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/bag_icon.png')}}"/>
+                        <p>Treatable by a medical professional</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/schedule_icon.png')}}"/>
+                        <p>Usually self-diagnosable</p>
+                      </div>
+                      <div class="bottom-info">
+                        <img class="information-icon" src="{{url_for('static', filename='/Image/lab_icon.png')}}"/>
+                        <p>Lab tests or imaging not required</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="symptoms-summary" class="information-summary">
+                  <div class="acne information-summary-disease">
+                    <div class="top">
+                      <h3>People may Experience</h3>
+                      <p><strong>Skin: </strong>pimples, redness, or tenderness</p>
+                      <p><strong>Also common: </strong>pimple or blackhead</p>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Requires a medical diagnosis</h3>
+                      <p>Symptoms range from uninflamed blackheads to pus-filled pimples or large, red and tender bumps.</p>
+                    </div>
+                  </div>
+                  <div class="pigmentation information-summary-disease">
+                    <div class="top">
+                      <h3>People may Experience</h3>
+                      <p><strong>Common symptoms: </strong>darkening of the skin</p>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Usually self-diagnosable</h3>
+                      <p>The brown or grey-brown patches of melasma appear most often on the cheeks, forehead, nose and chin.</p>
+                    </div>
+                  </div>
+                  <div class="lupus information-summary-disease">
+                    <div class="top">
+                      <h3>People may Experience</h3>
+                      <p><strong>Pain areas: </strong>in the muscles</p>
+                      <p><strong>Whole body: </strong>anaemia, fatigue, fever, or malaise</p>
+                      <p><strong>Mouth: </strong>dryness or ulcers</p>
+                      <p><strong>Skin: </strong>red rashes or scaly rashes</p>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Requires a medical diagnosis</h3>
+                      <p>Symptoms vary but can include fatigue, joint pain, rash and fever. These can periodically get worse (flare up) and then improve.</p>
+                    </div>
+                  </div>
+                  <div class="systemic information-summary-disease">
+                    <div class="top">
+                      <h3>People may Experience</h3>
+                      <p><strong>Skin: </strong>darkening of the skin or thickness</p>
+                      <p><strong>Also common: </strong>itching</p>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Requires a medical diagnosis</h3>
+                      <p>Dark, velvety patches of skin often appear in the armpits, groin and neck.</p>
+                    </div>
+                  </div>
+                  <div class="poison information-summary-disease">
+                    <div class="top">
+                      <h3>People may Experience</h3>
+                      <p><strong>Pain areas: </strong>in the skin</p>
+                      <p><strong>Skin: </strong>rashes, redness, blister, fissures, hives, peeling, or ulcers</p>
+                      <p><strong>Also common: </strong>itching or swelling</p>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Usually self-diagnosable</h3>
+                      <p>The main symptom is a red rash wherever the skin came into contact with the irritant.</p>
+                    </div>
+                  </div>
+                  <div class="vascular information-summary-disease">
+                    <div class="top">
+                      <h3>People may Experience</h3>
+                      <p><strong>Skin lesions: </strong>small, raised, dark red to purple papules</p>
+                      <p><strong>Skin texture changes: </strong>rough or scaly patches</p>
+                      <p><strong>Bleeding: </strong>from the lesions, particularly if irritated or scratched</p>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Requires a medical diagnosis</h3>
+                      <p>Symptoms include the presence of small, dark red to purple papules on the skin, commonly found on the genitals, thighs, buttocks, or lower abdomen.</p>
+                    </div>
+                  </div>
+                  <div class="hives information-summary-disease">
+                    <div class="top">
+                      <h3>People may Experience</h3>
+                      <p><strong>Skin: </strong>raised area of skin, swelling, or inflammation in response to touch</p>
+                      <p><strong>Also common: </strong>swelling, itching, or flare</p>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Usually self-diagnosable</h3>
+                      <p>Symptoms include itchy, raised, red or skin-colored welts on the skin's surface.</p>
+                    </div>
+                  </div>
+                  <div class="atopic information-summary-disease">
+                    <div class="top">
+                      <h3>People may Experience</h3>
+                      <p><strong>Skin: </strong>rashes, dryness, flakiness, bumps, fissures, peeling, or redness</p>
+                      <p><strong>Also common: </strong>itching</p>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Usually self-diagnosable</h3>
+                      <p>The main symptom is a rash that typically appears on the arms and behind the knees, but can also appear anywhere.</p>
+                    </div>
+                  </div>
+                  <div class="bullous information-summary-disease">
+                    <div class="top">
+                      <h3>People may Experience</h3>
+                      <p><strong>Skin: </strong>large, tense blisters filled with clear fluid</p>
+                      <p><strong>Itching: </strong>intense itching often precedes the development of blisters</p>
+                      <p><strong>Redness and inflammation: </strong>around the blisters or affected areas of skin</p>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Requires a medical diagnosis</h3>
+                      <p>Symptoms of bullous pemphigoid include the development of large, fluid-filled blisters or bullae on the skin, particularly in areas that flex or rub.</p>
+                    </div>
+                  </div>
+                  <div class="alopecia information-summary-disease">
+                    <div class="top">
+                      <h3>People may Experience</h3>
+                      <p><strong>Common symptoms: </strong>hair loss, anxiety, itching, or small dents in nails</p>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Requires a medical diagnosis</h3>
+                      <p>The main symptom is patchy hair loss.</p>
+                    </div>
+                  </div>
+                  <div class="ringworm information-summary-disease">
+                    <div class="top">
+                      <h3>People may Experience</h3>
+                      <p><strong>Skin: </strong>darkening of the skin, fissures, peeling, red rashes, or scaly patches</p>
+                      <p><strong>Also common: </strong>hair loss or itchy scalp</p>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Requires a medical diagnosis</h3>
+                      <p>Ringworm is typically scaly and may be red and itchy. Ringworm of the scalp is common in children, where it may cause bald patches.</p>
+                    </div>
+                  </div>
+                  <div class="psoriasis information-summary-disease">
+                    <div class="top">
+                      <h3>People may Experience</h3>
+                      <p><strong>Pain areas: </strong>in the joints</p>
+                      <p><strong>Skin: </strong>rashes, dryness, fissures, flakiness, peeling, small bump, thickness, or redness</p>
+                      <p><strong>Also common: </strong>depression, inflamed tendons, itching, joint stiffness, plaque, or small dents in nails</p>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Requires a medical diagnosis</h3>
+                      <p>The most common symptom is thick skin patches typically seen on elbows, knees, and lower back associated with white scaling on the scalp.</p>
+                    </div>
+                  </div>
+                  <div class="melanoma information-summary-disease">
+                    <div class="top">
+                      <h3>People may Experience</h3>
+                      <p><strong>Common symptoms: </strong>bigger mole diameter, darkening of the skin, mole color changes, or skin mole with irregular border</p>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Requires a medical diagnosis</h3>
+                      <p>Symptoms might include a new, unusual growth or a change in an existing mole. Melanomas can occur anywhere on the body.</p>
+                    </div>
+                  </div>
+                  <div class="nailfungus information-summary-disease">
+                    <div class="top">
+                      <h3>People may Experience</h3>
+                      <p><strong>Nails: </strong>discolouration, thickening, or brittle</p>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Usually self-diagnosable</h3>
+                      <p>The main symptoms are changes in the appearance of nails. Rarely, the condition causes pain or a slightly foul odor.</p>
+                    </div>
+                  </div>
+                  <div class="scabies information-summary-disease">
+                    <div class="top">
+                      <h3>People may Experience</h3>
+                      <p><strong>Skin: </strong>bumps or redness</p>
+                      <p><strong>Also common: </strong>itching or skin burrow</p>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Usually self-diagnosable</h3>
+                      <p>The most common symptom of scabies is intense itching at night in the area where the mites burrow.</p>
+                    </div>
+                  </div>
+                  <div class="eczema information-summary-disease">
+                    <div class="top">
+                      <h3>People may Experience</h3>
+                      <p><strong>Skin: </strong>rashes, dryness, flakiness, bumps, fissures, peeling, or redness</p>
+                      <p><strong>Also common: </strong>itching</p>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Usually self-diagnosable</h3>
+                      <p>The main symptom is a rash that typically appears on the arms and behind the knees, but can also appear anywhere.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div id="treatment-summary" class="information-summary">
+                  <div class="acne information-summary-disease">
+                    <div class="top">
+                      <h3>Medication</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Anti-inflammatory</li>
+                          <li>Vitamin A derivative</li>
+                          <li>Antibiotics</li>
+                          <li>Topical antiseptic</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Self-care</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Benzoyl peroxide / Salicylic acid</li>
+                          <li>Antibacterial soap</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="pigmentation information-summary-disease">
+                    <div class="top">
+                      <h3>Medication</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Steroid</li>
+                          <li>Depigmenting agent</li>
+                          <li>Vitamin A derivative</li>
+                          <li>Topical antiseptic</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Self-care</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Monitoring for changes or improvement</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="lupus information-summary-disease">
+                    <div class="top">
+                      <h3>Medication</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Immunosuppressive drug</li>
+                          <li>Steroid</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Self-care</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Sunblock</li>
+                          <li>Sun protective clothing</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="systemic information-summary-disease">
+                    <div class="top">
+                      <h3>Medication</h3>
+                      <div class="list">
+                        <ul>
+                          <li>As prescribed by doctor</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Self-care</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Weight loss</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="poison information-summary-disease">
+                    <div class="top">
+                      <h3>Medication</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Steroid</li>
+                          <li>Antibiotics</li>
+                          <li>Topical antiseptic</li>
+                          <li>Antihistamine</li>
+                          <li>Local anesthetic</li>
+                          <li>Antifungal</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Self-care</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Cold compress</li>
+                          <li>Sunblock</li>
+                          <li>Moisturizer</li>
+                          <li>Barrier cream</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="vascular information-summary-disease">
+                    <div class="top">
+                      <h3>Medication</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Topical treatments</li>
+                          <li>Cryotherapy</li>
+                          <li>Surgical excision</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Self-care</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Avoiding trauma</li>
+                          <li>Keeping the skin well moisturized</li>
+                          <li>monitoring and management</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="hives information-summary-disease">
+                    <div class="top">
+                      <h3>Medication</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Antihistamine</li>
+                          <li>Steroid</li>
+                          <li>Vasoconstrictor</li>
+                          <li>Anti-inflammatory</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Self-care</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Cold compress</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="atopic information-summary-disease">
+                    <div class="top">
+                      <h3>Medication</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Steroid</li>
+                          <li>Antihistamine</li>
+                          <li>Topical antiseptic</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Self-care</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Ultraviolet light therapy</li>
+                          <li>Barrier cream</li>
+                          <li>PUVA</li>
+                          <li>Coal tar extract</li>
+                          <li>Moisturizer</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bullous information-summary-disease">
+                    <div class="top">
+                      <h3>Medication</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Corticosteroids</li>
+                          <li>Immunosuppressants</li>
+                          <li>Antihistamines</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Self-care</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Avoiding friction</li>
+                          <li>Skin care</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="alopecia information-summary-disease">
+                    <div class="top">
+                      <h3>Medication</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Steroid</li>
+                          <li>Vasodilator</li>
+                          <li>Anti-inflammatory</li>
+                          <li>Immunosuppressive drug</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Self-care</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Applying UV light to the skin</li>
+                          <li>Stress management</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="ringworm information-summary-disease">
+                    <div class="top">
+                      <h3>Medication</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Antifungal</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Self-care</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Keep clean</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="psoriasis information-summary-disease">
+                    <div class="top">
+                      <h3>Medication</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Steroid</li>
+                          <li>Vitamin A derivative</li>
+                          <li>Anti-inflammatory</li>
+                          <li>Immunosuppressive drug</li>
+                          <li>Vitamin</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Self-care</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Stress management</li>
+                          <li>Petroleum jelly</li>
+                          <li>Light therapy</li>
+                          <li>Ultraviolet light therapy</li>
+                          <li>Moisturizer</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="melanoma information-summary-disease">
+                    <div class="top">
+                      <h3>Medication</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Antiviral drug</li>
+                          <li>Chemotherapy</li>
+                          <li>Immunotherapy</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Self-care</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Consult Doctor</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="nailfungus information-summary-disease">
+                    <div class="top">
+                      <h3>Medication</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Antifungal</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Self-care</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Consult Doctor</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="scabies information-summary-disease">
+                    <div class="top">
+                      <h3>Medication</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Antiparasitic</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Self-care</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Hot water laundry</li>
+                          <li>Dry cleaning</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="eczema information-summary-disease">
+                    <div class="top">
+                      <h3>Medication</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Steroid</li>
+                          <li>Antihistamine</li>
+                          <li>Topical antiseptic</li>
+                        </ul>
+                      </div>
+                    </div>
+                    <div class="bottom">
+                      <hr>
+                      <h3>Self-care</h3>
+                      <div class="list">
+                        <ul>
+                          <li>Ultraviolet light therapy</li>
+                          <li>Barrier cream</li>
+                          <li>Moisturizer</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+            </div>
+            <div class="doctor-block">
+              <div id="result" class="doctor-header">
+                <h2>Our Recommendation</h2>
+              </div>
+              <div class="doctor-content">
+                <div class="doctor-content-area">
+                  <div id="doctor1" class="doctor" data-map="map1">
+                    <h4>Manipal Hospital Yeshwanthpur</h4>
+                    <p>
+                      <strong>4.7</strong>
+                      <span class="star fa fa-star checked"></span>
+                      <span class="star fa fa-star checked"></span>
+                      <span class="star fa fa-star checked"></span>
+                      <span class="star fa fa-star checked"></span>
+                      <i class="star fa fa-star-half-full"></i>
+                    </p>
+                    <p class="doctor-address">Manipal Hospitals 26/4, BRIGADE GATEWAY, yeshwanthpur, beside Metro, Malleshwara, Bengaluru, 560055</p>
+                  </div>
+                  <div id="doctor2" class="doctor" data-map="map2">
+                    <h4>SPARSH Hospital Yeshwanthpur</h4>
+                    <p>
+                      <strong>4.7</strong>
+                      <span class="star fa fa-star checked"></span>
+                      <span class="star fa fa-star checked"></span>
+                      <span class="star fa fa-star checked"></span>
+                      <span class="star fa fa-star checked"></span>
+                      <i class="star fa fa-star-half-full"></i>
+                    </p>
+                    <p class="doctor-address">4/1, Tumkur Rd, Yeshwanthpur Industrial Area, Phase 1, Yeswanthpur, Bengaluru, Karnataka 560022</p>
+                  </div>
+                  <div id="doctor3" class="doctor" data-map="map3">
+                    <h4>Manipal Hospital Hebbal</h4>
+                    <p>
+                      <strong>4.6</strong>
+                      <span class="star fa fa-star checked"></span>
+                      <span class="star fa fa-star checked"></span>
+                      <span class="star fa fa-star checked"></span>
+                      <span class="star fa fa-star checked"></span>
+                      <i class="star fa fa-star-half-full"></i>
+                    </p>
+                    <p class="doctor-address">Kirloskar Business Park, Manipal Hospital, Bellary Rd, Bengaluru, Karnataka 560024</p>
+                  </div>
+                  <div id="doctor4" class="doctor" data-map="map4">
+                    <h4>Ramaiah Memorial Hospital</h4>
+                    <p>
+                      <strong>4.4</strong>
+                      <span class="star fa fa-star checked"></span>
+                      <span class="star fa fa-star checked"></span>
+                      <span class="star fa fa-star checked"></span>
+                      <span class="star fa fa-star checked"></span>
+                      <i class="star fa fa-star-half-full"></i>
+                    </p>
+                    <p class="doctor-address">New BEL Rd, M S Ramaiah Nagar, MSRIT Post, Bengaluru, Karnataka 560054</p>
+                  </div>
+                  <div id="doctor5" class="doctor" data-map="map5">
+                    <h4>Rajmahal Vilas hospital</h4>
+                    <p>
+                      <strong>3.4</strong>
+                      <span class="star fa fa-star checked"></span>
+                      <span class="star fa fa-star checked"></span>
+                      <span class="star fa fa-star checked"></span>
+                      <i class="star fa fa-star-half-full"></i>
+                      <i class="fa fa-star"></i>
+                    </p>
+                    <p class="doctor-address">No 138, RMV 2nd Stage, AECS Layout, Sanjay Nagar, Bengaluru, Karnataka 560094</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="map-block">
+              <iframe id="map1" class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15549.355123003863!2d77.53802045541993!3d13.014085100000012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae162a55555555%3A0x886d228d64097005!2sManipal%20Hospital%20Yeshwanthpur!5e0!3m2!1sen!2sin!4v1711649083690!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe id="map2" class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15548.499841699639!2d77.52490705541992!3d13.02771350000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3d6b8e17c907%3A0x5c6d10b34999d043!2sSPARSH%20Hospital%20Yeshwanthpur!5e0!3m2!1sen!2sin!4v1711649166382!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe id="map3" class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15547.040346139042!2d77.57590035541995!3d13.050937399999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae178f26a5ddf9%3A0x930a4b59c8b80796!2sManipal%20Hospital%20Hebbal!5e0!3m2!1sen!2sin!4v1711649207441!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe id="map4" class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d54590.404317832785!2d77.55302748142991!3d13.024641434931231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17dc7777e56d%3A0x3bfb44b6b12ec9d0!2sRamaiah%20Memorial%20Hospital!5e0!3m2!1sen!2sin!4v1711619681630!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe id="map5" class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15548.208729834449!2d77.56667331738282!3d13.032349000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17c244546a23%3A0xfd89542281b41253!2sRajmahal%20Vilas%20hospital!5e0!3m2!1sen!2sin!4v1711649262652!5m2!1sen!2sin" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
